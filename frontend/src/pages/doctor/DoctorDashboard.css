@@ -1,0 +1,983 @@
+
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap");
+
+/* =========================================
+   1. GLOBAL STYLES & OVERFLOW FIX
+========================================= */
+
+.doctor-dashboard,
+.doctor-dashboard *,
+.doctor-dashboard *::before,
+.doctor-dashboard *::after {
+  box-sizing: border-box;
+}
+
+.doctor-dashboard {
+  --primary: #009b8c;
+  --primary-dark: #007f74;
+  --text: #172033;
+  --muted: #71819c;
+  --border: #e1e8f0;
+  --surface: #ffffff;
+  --background: #f5f8fc;
+  --mono: "JetBrains Mono", monospace;
+
+  width: 100%;
+  max-width: 100%;
+  min-height: 100vh;
+  padding: 26px 32px;
+  background: var(--background);
+  color: var(--text);
+  font-family: "Plus Jakarta Sans", sans-serif;
+  overflow-x: clip;
+}
+
+.doctor-dashboard button,
+.doctor-dashboard input {
+  font-family: inherit;
+}
+
+.doctor-container {
+  width: 100%;
+  max-width: 1800px;
+  min-width: 0;
+  margin: 0 auto;
+}
+
+.doctor-page-content {
+  width: 100%;
+  min-width: 0;
+}
+
+/* =========================================
+   2. HEADER
+========================================= */
+
+.doctor-header {
+  min-height: 82px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  border-bottom: 1px solid var(--border);
+  padding: 0 4px 20px;
+  margin-bottom: 30px;
+}
+
+.doctor-brand,
+.doctor-profile {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.doctor-brand {
+  min-width: 0;
+}
+
+.doctor-brand > span:first-of-type {
+  font-size: 25px;
+  font-weight: 800;
+  letter-spacing: -1px;
+  white-space: nowrap;
+}
+
+.brand-icon {
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  background: var(--primary);
+  color: white;
+  border-radius: 13px;
+  display: grid;
+  place-items: center;
+  font-size: 27px;
+  font-weight: 800;
+}
+
+.workspace-label {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: var(--primary-dark);
+  background: #e6f7f4;
+  padding: 7px 10px;
+  border-radius: 6px;
+  white-space: nowrap;
+}
+
+.doctor-profile {
+  flex-shrink: 0;
+}
+
+.notification-wrapper {
+  position: relative;
+}
+
+.notification-btn {
+  width: 48px;
+  height: 48px;
+  border: 1px solid var(--border);
+  background: white;
+  color: #52627b;
+  border-radius: 12px;
+  font-size: 22px;
+  cursor: pointer;
+  position: relative;
+}
+
+.notification-dot {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: #ef9c38;
+  border-radius: 50%;
+  top: 9px;
+  right: 9px;
+}
+
+.notification-popup {
+  position: absolute;
+  z-index: 10;
+  top: 56px;
+  right: 0;
+  width: 250px;
+  padding: 18px;
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: 0 10px 30px #17203318;
+}
+
+.notification-popup p {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.profile-avatar {
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--primary);
+  color: white;
+  display: grid;
+  place-items: center;
+  font-weight: 800;
+}
+
+/* =========================================
+   3. WELCOME SECTION
+========================================= */
+
+.doctor-welcome {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  min-width: 0;
+  margin: 32px 0 27px;
+}
+
+.doctor-welcome h1 {
+  font-size: clamp(23px, 3vw, 30px);
+  font-weight: 800;
+  letter-spacing: -1px;
+  margin: 0 0 7px;
+}
+
+.doctor-welcome p {
+  color: var(--muted);
+  font-size: 14px;
+  margin: 0;
+}
+
+.date-label {
+  background: #f3f6fa;
+  padding: 10px 13px;
+  color: #61728d;
+  border-radius: 9px;
+  font-size: 11px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* =========================================
+   4. COMMON CARDS
+========================================= */
+
+.doctor-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 17px;
+  box-shadow: 0 2px 5px rgba(20, 40, 70, 0.035);
+  min-width: 0;
+}
+
+/* =========================================
+   5. STATISTICS CARDS
+========================================= */
+
+.doctor-stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+  width: 100%;
+  margin-bottom: 26px;
+}
+
+.stat-card {
+  padding: 23px 24px;
+  min-height: 160px;
+  min-width: 0;
+}
+
+.stat-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #52627b;
+  font-size: 13px;
+  font-weight: 600;
+  gap: 8px;
+}
+
+.stat-icon {
+  width: 42px;
+  height: 42px;
+  flex-shrink: 0;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.stat-icon.blue {
+  background: #eaf1ff;
+  color: #4384e9;
+}
+
+.stat-icon.purple {
+  background: #f1eaff;
+  color: #9660e8;
+}
+
+.stat-icon.orange {
+  background: #fff1df;
+  color: #ef962d;
+}
+
+.stat-icon.green {
+  background: #e2f8f1;
+  color: #13a77c;
+}
+
+.stat-card h2 {
+  margin: 14px 0 6px;
+  font-family: var(--mono);
+  font-size: 29px;
+  letter-spacing: -1px;
+  color: #172033;
+}
+
+.stat-card p {
+  font-size: 11px;
+  margin: 0;
+  font-weight: 500;
+}
+
+.trend-text {
+  color: #009b8c;
+}
+
+.warning-text {
+  color: #e58b20;
+}
+
+/* =========================================
+   6. NAVIGATION TABS
+========================================= */
+
+.doctor-nav {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  width: 100%;
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 13px;
+  overflow: hidden;
+  margin-bottom: 27px;
+}
+
+.doctor-nav-item {
+  min-width: 0;
+  min-height: 65px;
+  background: white;
+  border: none;
+  border-bottom: 3px solid transparent;
+  color: #52627b;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 11px;
+  cursor: pointer;
+  transition: 0.2s ease;
+  white-space: nowrap;
+}
+
+.doctor-nav-item:hover {
+  background: #f4fbfa;
+  color: var(--primary-dark);
+}
+
+.doctor-nav-item.active {
+  background: #e9faf7;
+  color: #008e81;
+  border-bottom-color: var(--primary);
+}
+
+.nav-icon {
+  font-size: 19px;
+  flex-shrink: 0;
+}
+
+/* =========================================
+   7. DASHBOARD CONTENT
+========================================= */
+
+.doctor-content-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr);
+  gap: 22px;
+  width: 100%;
+}
+
+.appointments-card,
+.weekly-card {
+  padding: 25px;
+  min-width: 0;
+}
+
+.card-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 27px;
+}
+
+.card-heading h3 {
+  font-size: 17px;
+  font-weight: 800;
+  margin: 0 0 7px;
+}
+
+.card-heading p {
+  font-size: 12px;
+  color: var(--muted);
+  margin: 0;
+}
+
+/* =========================================
+   8. APPOINTMENT ROWS
+========================================= */
+
+.appointment-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(75px, 0.5fr) minmax(85px, 0.6fr);
+  align-items: center;
+  gap: 12px;
+  padding: 15px 0;
+  border-bottom: 1px solid #edf0f4;
+  font-size: 12px;
+  min-width: 0;
+}
+
+.table-header {
+  color: #8b9ab0;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 0 0 13px;
+}
+
+.patient-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.patient-avatar {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.patient-avatar.purple {
+  background: #f0e9ff;
+  color: #9563e9;
+}
+
+.patient-avatar.blue {
+  background: #e6efff;
+  color: #4384e9;
+}
+
+.patient-avatar.pink {
+  background: #ffeaf0;
+  color: #e56d96;
+}
+
+.patient-avatar.green {
+  background: #e4f8ef;
+  color: #16a77d;
+}
+
+.patient-info strong {
+  display: block;
+  font-size: 12px;
+  color: #172033;
+}
+
+.patient-info small,
+.table-subtext {
+  display: block;
+  font-size: 10px;
+  color: #91a0b5;
+  margin-top: 4px;
+}
+
+.appointment-time {
+  color: #64748b;
+  font-size: 12px;
+}
+
+.appointment-status {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 84px;
+  padding: 8px 11px;
+  border-radius: 20px;
+  font-size: 10px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.appointment-status.confirmed,
+.appointment-status.completed {
+  background: #e1f8ef;
+  color: #07966e;
+}
+
+.appointment-status.pending {
+  background: #fff2dc;
+  color: #d8871f;
+}
+
+.doctor-text-btn {
+  background: transparent;
+  border: none;
+  color: var(--primary-dark);
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 700;
+  margin-top: 19px;
+  cursor: pointer;
+}
+
+.doctor-text-btn:hover {
+  text-decoration: underline;
+}
+
+/* =========================================
+   9. WEEKLY CHART
+========================================= */
+
+.more-btn {
+  color: #8d9bb1;
+  font-size: 20px;
+}
+
+.weekly-total {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin: 36px 0 22px;
+}
+
+.weekly-total strong {
+  font-family: var(--mono);
+  font-size: 34px;
+}
+
+.weekly-total span {
+  color: #8b9ab0;
+  font-size: 11px;
+}
+
+.weekly-chart {
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  height: 190px;
+  min-width: 0;
+  padding-top: 5px;
+}
+
+.chart-column {
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 9px;
+}
+
+.chart-bar-bg {
+  height: 160px;
+  width: 100%;
+  border-radius: 9px 9px 0 0;
+  background: #f0f4f7;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+}
+
+.chart-bar {
+  width: 100%;
+  background: #299b99;
+  border-radius: 9px 9px 0 0;
+}
+
+.chart-column > span {
+  color: #8998ac;
+  font-size: 10px;
+}
+
+/* =========================================
+   10. MODULE PAGES
+========================================= */
+
+.module-card {
+  padding: 27px;
+  min-height: 400px;
+  width: 100%;
+  min-width: 0;
+}
+
+.module-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  margin-bottom: 28px;
+}
+
+.module-heading h2 {
+  font-size: 19px;
+  font-weight: 800;
+  margin: 0 0 7px;
+}
+
+.module-heading p {
+  color: var(--muted);
+  font-size: 12px;
+  margin: 0;
+}
+
+.module-count {
+  background: #e8f8f5;
+  color: #008e81;
+  padding: 10px 14px;
+  border-radius: 9px;
+  font-size: 11px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+/* =========================================
+   11. TABLES
+========================================= */
+
+.cs-table-scroll {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.doctor-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 760px;
+  text-align: left;
+}
+
+.doctor-table th {
+  background: #f7f9fc;
+  color: #75859e;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 16px;
+  white-space: nowrap;
+}
+
+.doctor-table td {
+  padding: 16px;
+  border-bottom: 1px solid #edf0f4;
+  font-size: 12px;
+  color: #53637c;
+}
+
+.doctor-table tbody tr:hover {
+  background: #f9fcfc;
+}
+
+.doctor-table td strong {
+  color: #172033;
+}
+
+.mono-text {
+  font-family: var(--mono);
+  font-size: 11px !important;
+}
+
+.empty-state {
+  text-align: center !important;
+  padding: 40px !important;
+  color: #91a0b5 !important;
+}
+
+/* =========================================
+   12. AVAILABILITY SCHEDULE
+========================================= */
+
+.schedule-list {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.schedule-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 8px;
+  border-bottom: 1px solid #edf0f4;
+  gap: 15px;
+}
+
+.schedule-row strong {
+  display: block;
+  font-size: 13px;
+}
+
+.schedule-row small {
+  display: block;
+  color: var(--muted);
+  font-size: 11px;
+  margin-top: 6px;
+}
+
+.schedule-action {
+  display: flex;
+  align-items: center;
+  gap: 17px;
+  flex-shrink: 0;
+}
+
+.available-label,
+.unavailable-label {
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.available-label {
+  color: #009b79;
+}
+
+.unavailable-label {
+  color: #9aa5b5;
+}
+
+.schedule-toggle {
+  width: 43px;
+  height: 24px;
+  background: #dce3ec;
+  border: none;
+  border-radius: 20px;
+  padding: 3px;
+  cursor: pointer;
+  transition: 0.2s;
+  flex-shrink: 0;
+}
+
+.schedule-toggle span {
+  width: 18px;
+  height: 18px;
+  display: block;
+  background: white;
+  border-radius: 50%;
+  transition: 0.2s;
+}
+
+.schedule-toggle.enabled {
+  background: var(--primary);
+}
+
+.schedule-toggle.enabled span {
+  transform: translateX(19px);
+}
+
+.schedule-note {
+  margin-top: 22px;
+  color: #8998ac;
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+/* =========================================
+   13. PATIENT SEARCH
+========================================= */
+
+.patient-search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  max-width: 420px;
+  height: 44px;
+  padding: 0 13px;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  margin-bottom: 23px;
+  color: #8a99ae;
+  background: white;
+}
+
+.patient-search input {
+  border: none;
+  outline: none;
+  background: transparent;
+  width: 100%;
+  min-width: 0;
+  color: var(--text);
+  font-family: inherit;
+  font-size: 12px;
+}
+
+/* =========================================
+   14. FOOTER
+========================================= */
+
+.doctor-footer {
+  margin-top: 42px;
+  padding: 23px 4px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  color: #8291a7;
+  font-size: 11px;
+}
+
+/* =========================================
+   15. RESPONSIVE - TABLETS
+========================================= */
+
+@media (max-width: 1100px) {
+  .doctor-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .doctor-content-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .doctor-container {
+    max-width: 100%;
+  }
+}
+
+/* =========================================
+   16. RESPONSIVE - MOBILE
+========================================= */
+
+@media (max-width: 650px) {
+  .doctor-dashboard {
+    padding: 15px 12px;
+  }
+
+  .doctor-header {
+    margin-bottom: 20px;
+  }
+
+  .doctor-brand {
+    gap: 9px;
+  }
+
+  .doctor-brand > span:first-of-type {
+    font-size: 19px;
+  }
+
+  .brand-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 23px;
+  }
+
+  .workspace-label {
+    display: none;
+  }
+
+  .notification-btn,
+  .profile-avatar {
+    width: 40px;
+    height: 40px;
+  }
+
+  .doctor-welcome {
+    align-items: flex-start;
+    flex-direction: column;
+    margin: 24px 0;
+  }
+
+  .doctor-welcome h1 {
+    font-size: 23px;
+  }
+
+  .doctor-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .stat-card {
+    min-height: 135px;
+    padding: 15px;
+  }
+
+  .stat-card h2 {
+    font-size: 23px;
+  }
+
+  .stat-top {
+    font-size: 11px;
+  }
+
+  .stat-icon {
+    width: 32px;
+    height: 32px;
+    font-size: 15px;
+  }
+
+  .stat-card p {
+    font-size: 9px;
+  }
+
+  .doctor-nav {
+    display: flex;
+    overflow-x: auto;
+    border-radius: 10px;
+  }
+
+  .doctor-nav-item {
+    min-width: 125px;
+    padding: 0 12px;
+    font-size: 11px;
+  }
+
+  .appointments-card,
+  .weekly-card,
+  .module-card {
+    padding: 17px;
+  }
+
+  .appointment-row {
+    grid-template-columns: minmax(0, 1fr) 70px;
+    gap: 8px;
+  }
+
+  .appointment-row > :last-child {
+    grid-column: 2;
+  }
+
+  .table-header > :last-child {
+    display: none;
+  }
+
+  .card-heading {
+    flex-direction: column;
+  }
+
+  .module-heading {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .schedule-row {
+    padding: 16px 0;
+  }
+
+  .schedule-action {
+    gap: 9px;
+  }
+
+  .weekly-chart {
+    gap: 6px;
+  }
+
+  .doctor-footer {
+    font-size: 9px;
+  }
+}
+
+/* =========================================
+   17. SMALL MOBILE
+========================================= */
+
+@media (max-width: 380px) {
+  .doctor-dashboard {
+    padding: 12px 8px;
+  }
+
+  .doctor-brand > span:first-of-type {
+    font-size: 17px;
+  }
+
+  .doctor-stats {
+    gap: 8px;
+  }
+
+  .stat-card {
+    padding: 12px;
+  }
+
+  .stat-top {
+    font-size: 10px;
+  }
+
+  .stat-card h2 {
+    font-size: 20px;
+  }
+
+  .schedule-row strong {
+    font-size: 11px;
+  }
+
+  .schedule-row small {
+    font-size: 9px;
+  }
+}
